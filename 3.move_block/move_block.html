@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Move_block</title>
+
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            vertical-align: top;
+        }
+
+        body {
+            background-color: rgba(255, 179, 51, .5);
+
+            z-index: 0;
+        }
+
+        .move_h {
+            z-index: 5;
+            display: flex;
+            align-self: flex-start;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            width: 200px;
+            height: 40px;
+            font-size: 30px;
+            text-transform: uppercase;
+            border: 2px solid grey;
+            box-shadow: -3px 7px 3px 1px #808d93;
+            background-color: #fff;
+            color: #202c2d;
+            text-shadow:
+                0 1px #808d93,
+                -1px 0 #cdd2d5,
+                -1px 2px #808d93,
+                -2px 1px #cdd2d5,
+                -2px 3px #808d93,
+                -3px 2px #cdd2d5,
+                -3px 4px #808d93,
+                -4px 3px #cdd2d5,
+                -4px 5px #808d93,
+                -5px 4px #cdd2d5,
+                -5px 6px #808d93,
+                -6px 5px #cdd2d5,
+                -6px 7px #808d93,
+                -7px 6px #cdd2d5,
+                -7px 8px #808d93,
+                -8px 7px #cdd2d5;
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 1155px;
+            width: 100%;
+        }
+
+        .text-before-number,
+        .number,
+        .number_lose {
+            color: black;
+            text-transform: uppercase;
+            font-size: 20px;
+            padding-right: 20px;
+            font-weight: 700;
+            
+        }
+
+        .number,
+        .number_lose {
+            display: flex;
+            font-size: 30px;
+            border: 1px solid black;
+            border-radius: 50%;
+            max-width: 50px;
+            width: 100%;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+
+        }
+
+        .number_lose {
+            color: red;
+
+        }
+
+        .hi:hover {
+            cursor: pointer;
+        }
+
+        .message-block {
+            font-size: 9rem;
+            margin: 0 auto;
+            display: inline-block;
+
+        }
+
+        .hi {
+            display:inline-block;
+            z-index: 5;
+            color: #444;
+            text-shadow:
+                1px 0px 1px #ccc, 0px 1px 1px #eee,
+                2px 1px 1px #ccc, 1px 2px 1px #eee,
+                3px 2px 1px #ccc, 2px 3px 1px #eee,
+                4px 3px 1px #ccc, 3px 4px 1px #eee,
+                5px 4px 1px #ccc, 4px 5px 1px #eee,
+                6px 5px 1px #ccc, 5px 6px 1px #eee,
+                7px 6px 1px #ccc;
+        }
+    </style>
+    <a class="moving-block move_h down" href="#">Click me</a>
+
+    <h1 class="moving-block hi right " style="color: green;">Hi!</h1>
+    <div class="container " style="margin:0 auto; max-width: 1024px; width: 100%; display: flex; justify-content: space-between;"><span class="text-before-number">Numbers of <mark>successful</mark> clicks: </span>
+        <div class="number"></div>
+        <span class="text-before-number">Numbers of <mark style="background-color: indianred">lost</mark> clicks: </span>
+        <div class="number_lose"></div>
+
+    </div>
+    <div class="container">
+        <div class="message-block"></div>
+    </div>
+
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+<script>
+    let leftOffset = 0;
+    let topOffset = 0;
+    let dir = "right";
+    let moveBlockFunction = function() {
+        $(".right").offset({
+            left: leftOffset,
+            top: topOffset
+        });
+        if (dir == "right") {
+            leftOffset++;
+        } else {
+            leftOffset--;
+        }
+        if (leftOffset < 0 && topOffset > 0) {
+            leftOffset = 0;
+            topOffset--;
+        } else if (topOffset == 0) {
+            dir = "right";
+        }
+        if (leftOffset > 500) {
+            leftOffset = 500;
+            topOffset++;
+            if (topOffset > 500) {
+                topOffset = 500;
+                dir = "left";
+            } else if (leftOffset < 0) {
+                leftOffset = 0;
+            }
+        }
+    }
+    let timing = 40;
+    let time = 40;
+    let diference = timing - time;
+    let intervalSet = setInterval(moveBlockFunction, timing);
+
+    $(".right").on('click', function() {
+        clearInterval(intervalSet);
+        let newIntervalSet = setInterval(moveBlockFunction, diference);
+
+    });
+
+
+    let leftOffsetHi = 100;
+    let topOffsetHi = 100;
+    let dirY = "bottom";
+
+    let moveBlockHi = function() {
+        $(".down").offset({
+            left: leftOffsetHi,
+            top: topOffsetHi
+        });
+        if (dirY == "bottom") {
+            $(".hi").css('color', 'brown');
+            topOffsetHi++;
+        } else {
+            topOffsetHi--;
+        }
+        if (topOffsetHi > 500) {
+            $(".hi").css('color', 'red');
+            topOffsetHi = 500;
+            leftOffsetHi++;
+        } else if (topOffsetHi < 100) {
+            $(".hi").css('color', 'blue');
+            topOffsetHi = 100;
+            leftOffsetHi--;
+        }
+
+        if (leftOffsetHi > 500) {
+            $(".hi").css('color', 'grey');
+            leftOffsetHi = 500;
+            dirY = "top";
+
+        } else if (leftOffsetHi < 100) {
+            leftOffsetHi = 100;
+            dirY = "bottom";
+        }
+
+
+
+
+    }
+
+    let intervalBlockHi = setInterval(moveBlockHi, 10);
+    let attemptNumber = 1;
+    let numberLose = 0;
+    $(function() {
+        $(".moving-block").on('click', function() {
+            let numberBlock = document.querySelector(".number");
+            $(numberBlock).text(attemptNumber);
+            attemptNumber++;
+            $(this).fadeOut(800).fadeIn(800);
+            if ($(this).hasClass("down")) {
+                $(".moving-block").removeClass("right").addClass("down");
+                $(this).removeClass("down").addClass("right");
+            } else if ($(this).hasClass("right")) {
+                $(".moving-block").removeClass("down").addClass("right");
+                $(this).removeClass("right").addClass("down");
+            }
+        })
+        $('html').on('click', function() {
+            numberLose++;
+            let numberLoseBlock = document.querySelector(".number_lose");
+            $(numberLoseBlock).text(numberLose);
+            if (numberLose == 10) {
+                let messageBlock = document.querySelector(".message-block")
+                let messageLose = "Sorry you lose";
+                $(messageBlock).text(messageLose);
+
+
+
+            }
+
+        })
+
+        $(".moving-block").on('click', function(event) {
+            event.stopPropagation();
+        })
+    })
+</script></html>

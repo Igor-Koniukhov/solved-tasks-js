@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+</head>
+
+<body>
+
+<div class="container" style="margin: 0 auto; max-width: 1024px; width: 100%; display: flex; justify-content: center;">
+    <h1>Приятно повИселиться!</h1>
+</div>
+<script>
+    
+    let words = ["apple", "book", "table", "cursor", "clock"];
+let word = words[Math.floor(Math.random() * words.length)];
+let answerArray = [];
+for (var i = 0; i < word.length; i++) {
+    answerArray[i] = "_";
+}
+
+let lifes = word.length + 3;
+
+let guessLetters = word.length;
+
+
+while (guessLetters > 0 && lifes > 0) {
+    alert(answerArray.join(" ") + " " + " " + "word contain:" + " " + guessLetters + " " + " characters." + "You have:" + " " + lifes + " " + "lifes");
+
+    let guess = prompt(" Guess the character");
+    if (guess === null) {
+        break;
+    } else if (guess.length !== 1) {
+        alert("You should insiert one character! No more.")
+    } else {
+        lifes--;
+        for (var j = 0; j < word.length; j++) {
+            guess = guess.toLowerCase();
+            if (word[j] === guess) {
+                answerArray[j] = guess;
+                guessLetters--;
+            }
+        }
+    }
+} 
+
+if (guessLetters === 0) {
+    alert("Congratulation! You win! Word was:" + " " + [answerArray.join("")]);
+}else if(lifes === 0){
+    alert("It's so pity... you lose");
+    alert("the word was:"+ " "+ word);
+}
+
+    
+    </script>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+</html>

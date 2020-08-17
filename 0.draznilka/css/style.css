@@ -1,0 +1,146 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+.container {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1155px;
+    width: 100%;
+    padding: 0 15px;
+    height: 100%;
+    justify-content: center;
+
+
+}
+
+.container .wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.margin-8 {
+    margin-top: 8%;
+}
+
+.var1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.lamp {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 3px solid black;
+    background-color: yellow;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 8px 1px 10px black;
+}
+
+.active {
+    background-color: red;
+
+}
+
+.lamp.active:hover {
+    cursor: pointer;
+}
+
+.field-text {
+    max-width: 700px;
+    width: 100%;
+    border: 2px solid black;
+    max-height: 300px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    border-radius: 30px 30px 30px 0;
+    background-color: #fff;
+    box-shadow: 10px 2px 10px #000;
+}
+
+.field-text-dublicate {
+    max-width: 750px;
+    height: 250px;
+    /*border: 3px solid grey;*/
+    margin-top: 40px;
+    background-color: #e4cadd;
+    border-radius: 50px;
+    padding: 1%;
+}
+
+.field-text-dublicate_green {
+    color: #37c706e8;
+    height: 100%;
+}
+
+.field-text-dublicate_red {
+    color: #f50505;
+    height: 100%;
+}
+
+.field-text-dublicate_yellow {
+    color: #a5a50b;
+    height: 100%;
+}
+
+.container h1 {
+    text-transform: uppercase;
+    box-shadow: 10px 2px 10px #e4cadd;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100px;
+    border: 2px solid grey;
+    background-color: aqua;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10%;
+    box-shadow: 10px 2px 10px #e4cadd;
+}
+
+.button:hover {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.wrapper-item-margin {
+    display: none;
+}
+
+body {
+    background-color: cadetblue;
+}
+
+
+@media only screen and (max-device-width: 560px) {
+
+    .container .wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .wrapper-item-margin {
+        display: block;
+    }
+    .button{
+        width: 300px;
+        
+    }
+}

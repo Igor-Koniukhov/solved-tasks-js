@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Massive-coincide</title>
+   
+</head>
+
+<body>
+ <style>
+        .container{
+            margin: 0 auto;
+        }
+    </style>
+<div class="container" style="margin:0 auto; max-width: 1024px; width: 100%; display: flex; justify-content: center;">
+    <h1>Зайди в консоль</h1>
+</div>
+<script>
+    // решение задачки из книги JS для самых маленьких :)
+// необходимо перебрать массивы на соответствие друг другу. Если масивы не соответствуют по длине - стоп
+// если не несоответствуют по значениям вывести false
+let k = 0;
+function areArraysSame(a, b) {
+    while (k < a.length && a.length == b.length) {
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] !== b[i]) {
+                console.log("false")
+                document.body.style.backgroundColor = 'red';
+                alert("false");
+                
+                return false;
+            }
+        }
+        console.log("true");
+        document.body.style.backgroundColor = 'green';
+        alert("true");
+        
+        return true;
+    }
+    if (a.length !== b.length) {
+        console.log("length not coincide");
+        document.body.style.backgroundColor = 'yellow';
+        alert("length not coincide");
+        
+    }
+}
+
+areArraysSame([1, 2, 3], [4, 5, 6]);
+areArraysSame([1, 2, 3], [1, 2, 6]);
+areArraysSame([1, 2, 3], [1, 2, 3]);
+areArraysSame([1, 2, 3], [1, 2, 3, 4]);
+
+    
+    </script>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+</html>

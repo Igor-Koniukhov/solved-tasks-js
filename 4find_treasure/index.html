@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>treasure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            vertical-align: top;
+            box-sizing: border-box;
+        }
+
+        .container {
+            position: relative;
+            margin: 0 auto;
+            max-width: 1155px;
+            width: 100%;
+            z-index: 1;
+        }
+
+
+
+        header {
+            width: 100%;
+            height: 200px;
+
+        }
+
+        .menu-wrapper {
+            display: flex;
+
+        }
+
+        .message {
+            font-size: 50px;
+            color: red;
+        }
+
+        .name-of-the-game {
+            margin: 0 auto;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 72px;
+            font-weight: 700;
+            z-index: 50;
+        }
+
+        .main-title {
+            position: relative;
+            margin: 0 auto;
+            display: inline-block;
+            padding-bottom: 40px;
+            z-index: 50px;
+
+        }
+
+        .map-wrapper {
+            display: flex;
+            flex-direction: column;
+            padding-top: 40px;
+        }
+
+
+
+        body,
+        html {
+            
+            height: 100%;
+
+
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+
+        .number-of-attempt {
+            font-size: 30px;
+
+        }
+
+        .block-map {
+            position: relative;
+            max-width: 1024px;
+            width: 100%;
+            height: 721px;
+            position: relative;
+
+            margin: 0 auto;
+            box-shadow: 10px 10px 10px 4px rgba(0, 0, 0, .4);
+            z-index: 0;
+        }
+
+        .block-map::before {
+            /*width: px;
+            height:800px;*/
+            position: absolute;
+            content: '';
+            background-image: url('img/map_pirat.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 50;
+
+        }
+
+        .distance-message {
+            font-size: 30px;
+        }
+
+        .header-wrapper {
+            position: relative;
+        }
+
+        .header-wrapper {
+            padding-top: 90px;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .header-wrapper::before {
+            width: 100%;
+            height: 100;
+            position: absolute;
+            content: '';
+            background-image: url(img/big_1815_oboi_starinnaja_karta.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+
+
+        }
+
+        .header-wrapper::after {
+            /*width: 100%;
+            height: 100;*/
+            position: absolute;
+            content: '';
+            background-color: rgba(0, 0, 0, .4);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            
+            border: 3px solid gold
+        }
+
+        footer {
+            flex-shrink:0;
+            /*width: 100%;
+            height: 200px;*/
+            background-color: grey;
+            position: relative;
+            
+        }
+        
+
+        /*.push {
+            height: 200px;
+        }
+*/
+        .footer-wrapper::after {
+            /*width: 100%;
+            height: 100;*/
+            position: absolute;
+            content: '';
+            background-color: rgba(0, 0, 0, .4);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            
+            border: 3px solid gold
+        }
+
+
+        /*body::before{
+            width: 100%;
+            height: 100;
+            position: absolute;
+            content: '';
+            background-image: url(img/ocean.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+        }*/
+        .footer-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            
+        }
+
+        .footer-wrapper::before {
+            width: 100%;
+            height: 100;
+            position: absolute;
+            content: '';
+            background-image: url(img/big_1815_oboi_starinnaja_karta.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .message,
+        .number-of-attempt,
+        .distance-message {
+            z-index: 50;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <header>
+        <div class="header-wrapper">
+            <div class="container">
+                <div class="menu-wrapper">
+                    <div class="name-of-the-game">Find the treasure</div>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+        <div class="main-wrapper">
+
+            <div class="container map-wrapper">
+                <h1 class="main-title">The Map of the Treasure</h1>
+                <div class="block-map"></div>
+                <img style="width: 70px;height: 70px;" src="img/treasure.png" alt="">
+                <p class="message"></p>
+                <p class="number-of-attempt"></p>
+                <p class="distance-message"></p>
+            </div>
+
+        </div>
+        <div class="push"></div>
+    </main>
+    <footer>
+        <div class="footer-wrapper">
+           
+            <div class="container">
+                <div class="content-footer"><h2>this is footer</h2></div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero harum, saepe doloribus sapiente officia, illum cum. Earum explicabo nihil rem minus. Cum eius, alias voluptatibus dolores rerum atque quis, minus cupiditate impedit pariatur enim ut, error quo. Animi officia temporibus asperiores deleniti eos enim repudiandae libero, expedita sit. Ipsum quia fuga vero esse provident, ex, modi numquam asperiores ducimus fugiat quis, blanditiis, ratione molestias commodi. Enim, ipsam!</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        let width = 1024;
+        let height = 721;
+        let attempt = 0;
+        let randomCoordinate = function(size) {
+            return Math.floor(Math.random() * size);
+        }
+
+
+
+        var target = {
+            x: randomCoordinate(width),
+            y: randomCoordinate(height)
+        }
+
+        console.log(target.x + " " + target.y);
+
+
+        let getDistance = function(event, target) {
+            let diffX = event.offsetX - target.x;
+            let diffY = event.offsetY - target.y;
+            return Math.floor(Math.sqrt((diffX * diffX) + (diffY * diffY)));
+        }
+
+        let distanceHint = function(distance) {
+
+            if (distance < 20) {
+                return "you won!";
+            } else if (distance > 350) {
+                return "very cold";
+            }
+
+            if (distance < 40 && distance > 15) {
+                return "hot";
+            } else if (distance < 100) {
+                return "warm";
+                return point.css('background-color', 'red')
+            } else if (distance > 100) {
+                return "cold";
+                return point.css('background-color', 'red');
+            } else if (distance > 180) {
+                return "colder";
+            }
+
+        }
+
+        let pointPlace = function(point, event, color) {
+            return $(point).css({
+                width: 20,
+                height: 20,
+                borderRadius: '50%',
+                backgroundColor: color,
+                zIndex: 50,
+                position: 'absolute',
+                left: event.offsetX,
+                top: event.offsetY
+            })
+            /* $(".map").append(point);*/
+        }
+        let pointPlaceImg = function(pointImg, event, color) {
+            return $(pointImg).css({
+                width: 70,
+                height: 70,
+                zIndex: 50,
+                backgroundColor: 'red',
+                position: 'absolute',
+                left: event.offsetX,
+                top: event.offsetY
+            })
+            /* $(".map").append(point);*/
+        }
+
+
+        $(".block-map").on('click', function(event) {
+            attempt++;
+            let distance = getDistance(event, target);
+            console.log(distance);
+            console.log(distanceHint(distance));
+            let message = $(".message").text(distanceHint(distance));
+            let messageAboutDistance = $(".distance-message").text("Remain distance to the treasure: " + distance);
+            if (distanceHint(distance) == "cold") {
+                color = '#8686d9';
+                message.css('color', color);
+            } else if (distanceHint(distance) == "warm") {
+                color = '#f87da7';
+                message.css('color', color);
+            } else if (distanceHint(distance) == "hot") {
+                color = '#e12d6a';
+                message.css('color', color);
+            } else if (distanceHint(distance) == "very cold") {
+                color = '#0807ae';
+                message.css('color', color);
+            }
+
+            let messageOfAttempt = $(".number-of-attempt").text("the number of attempt: " + attempt);
+            let point = $(`<div class=point></div>`);
+
+            $(".block-map").append(pointPlace(point, event, color));
+            if (distanceHint(distance) == "you won!") {
+                let pointImg = $(`<img style="width: 70px;height: 70px; position: absolute;" src="img/treasure.png" alt="">`);
+                $(".block-map").append(pointPlaceImg(pointImg, event, color));
+                message.css('color', 'green');
+            }
+
+            if (attempt == 20) {
+                $(".number-of-attempt").text("Sorry your limit is: " + attempt + "you lose!")
+                alert("Sorry your limit is: " + attempt + "you lose!");
+            }
+
+
+
+        })
+
+    </script>
+</body>
+
+</html>
